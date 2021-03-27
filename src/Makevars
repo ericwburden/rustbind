@@ -1,6 +1,6 @@
 LIBDIR = ./rust/target/release
-STATLIB = $(LIBDIR)/libhelloextendr.a
-PKG_LIBS = -L$(LIBDIR) -lhelloextendr
+STATLIB = $(LIBDIR)/librustbind.a
+PKG_LIBS = -L$(LIBDIR) -lrustbind
 
 all: C_clean
 
@@ -10,7 +10,7 @@ $(STATLIB):
 	cargo build --lib --release --manifest-path=./rust/Cargo.toml
 
 C_clean:
-	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS)
+	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS);
 
 clean:
 	rm -Rf $(SHLIB) $(STATLIB) $(OBJECTS) rust/target

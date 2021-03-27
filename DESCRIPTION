@@ -1,14 +1,15 @@
-Package: helloextendr
+Package: rustbind
 Title: Minimal Example of Calling Rust from R
-Version: 0.1.0
-Authors@R: c(
-    person("Andy", "Thomason", , "andy@andythomason.com", c("aut")),
-    person("Claus O.", "Wilke", , "wilke@austin.utexas.edu", c("aut", "cre"),
-      comment = c(ORCID = "0000-0002-7470-9261"))
-  )
+Version: 1.0.0
+Authors@R: person("Eric", "Burden", email = "eric.w.burden@gmail.com", role = c("aut", "cre"))
 Description:
-  This is a template package to demonstrate how to call
-  Rust from R using the 'extendr-api' crate.
+  This is a template package to demonstrate how to call Rust from R using the 
+  'extendr-api' crate. This package is based on the example provided by the
+  extendr project at https://github.com/extendr/helloextendr. This package
+  includes a number of examples of passing R vectors to Rust and receiving
+  back modified values. Where deemed necessary, additional modifications are 
+  made to input/output values by wrapping the extendr-generated functions on
+  the R side.
 License: MIT + file LICENSE
 SystemRequirements: Rust tool chain w/ cargo, libclang/llvm-config
 Encoding: UTF-8

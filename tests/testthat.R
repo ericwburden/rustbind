@@ -1,4 +1,4 @@
 library(testthat)
-library(helloextendr)
+library(rustbind)
 
-test_check("helloextendr")
+test_check("rustbind")
