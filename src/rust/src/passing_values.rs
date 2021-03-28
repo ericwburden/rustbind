@@ -20,7 +20,7 @@ pub(crate) fn pass_multiple_integers_fn(n: Int) -> Int {
 /// Receives a double (float) value from R, multiplies it by 10, then returns it.
 /// Demonstrates passing a single double from/to R.
 pub(crate) fn pass_single_double_fn(f: Option<f64>) -> Option<f64> {
-    f.map(|x| x* 10.0)
+    f.map(|x| x * 10.0)
 }
 
 /// Receives a double (float) vector from R, multiplies it by 10, then returns it.
