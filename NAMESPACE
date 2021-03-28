@@ -3,7 +3,6 @@
 export(bubble_sort)
 export(bubble_sort_r)
 export(pass_multiple_characters)
-export(pass_multiple_characters_wrapped)
 export(pass_multiple_doubles)
 export(pass_multiple_integers)
 export(pass_multiple_integers_wrapped)

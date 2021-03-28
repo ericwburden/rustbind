@@ -1,6 +1,6 @@
-# Currently only including R wrappers for passing integers and characters, since
-# the Rust/extendr handling for doubles, logicals, and raws behaves basically as
-# expected
+# This R script includes functions that 'wrap' the functions provided by extendr
+# to extend the functionality on the R side, including checking for length-one
+# vectors, coercing double vectors to integer vectors, and manually handling NA's
 
 # R Wrappers for passing integers ----------------------------------------------
 
@@ -41,27 +41,4 @@ pass_multiple_integers_wrapped <- function(n = c(5, 7, 9)) {
   n <- as.integer(n)
   result <- as.numeric(pass_multiple_integers(n))
   replace(result, is.na(n), NA)  # Handle NA's
-}
-
-
-# R Wrappers for passing characters --------------------------------------------
-
-#' Provides `NA` handling for character vectors
-#' 
-#' The extendr API doesn't (as far as I can tell) support NA-handling in 
-#' character vectors natively. This function emulates that support by replacing
-#' elements in the output with `NA` where they are `NA` in the input.
-#'
-#' @param s A character vector to pass to Rust
-#'
-#' @return toupper(s)
-#' @export
-#'
-#' @examples
-#' pass_multiple_characters_wrapped(c("a", 7, NA))  # c("A", "7", NA)
-pass_multiple_characters_wrapped <- function(s = c("a", "b", NA)) {
-  s <- as.character(s)
-  na_idx <- is.na(s)
-  result <- pass_multiple_characters(replace(s, na_idx, ""))
-  replace(result, na_idx, NA_character_)
 }
