@@ -103,7 +103,7 @@ extendr_module! {
 }
 ```
 
-And that's it! After sourcing `build.R` in order to build, install, and load your package, you will be able to call `yourpackagename::bubble_sort(n)` and take advantage of Rust's blazing speed in your R code. Also, note the format of that doc comment. If you've written R packages before, you'll recognize those as [`roxygen2`](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) comments, which are used to build the documentation for your package, as well as control whether or not the function is available outside your package (via package_name::function_name) through the '@export' function.
+And that's it! After sourcing `build.R` in order to build, install, and load your package, you will be able to call `yourpackagename::bubble_sort(n)` and take advantage of Rust's blazing speed in your R code. Also, note the format of that doc comment. If you've written R packages before, you'll recognize those as [`roxygen2`](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) comments, which are used to build the documentation for your package, as well as control whether or not the function is available outside your package (via package_name::function_name) through the '@export' tag.
 
 ### Was it Worth It?
 
