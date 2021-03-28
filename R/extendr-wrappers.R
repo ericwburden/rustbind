@@ -214,14 +214,14 @@ pass_single_character <- function(s) .Call(wrap__pass_single_character, s)
 pass_multiple_characters <- function(s) .Call(wrap__pass_multiple_characters, s)
 
 #' Bubble Sort a vector of doubles
-#' 
+#'
 #' Demonstrates using Rust to perform a Bubble Sort on a vector of doubles
-#' 
+#'
 #' @param input A double vector to sort
 #' @return a sorted vector of doubles
-#' 
+#'
 #' @examples bubble_sort(runif(1000))
-#' 
+#'
 #' @export
 bubble_sort <- function(input) .Call(wrap__bubble_sort, input)
 

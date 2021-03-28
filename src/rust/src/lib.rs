@@ -1,7 +1,9 @@
+use crate::structs::CharVec;
 use extendr_api::prelude::*;
 
-mod bubble_sort;
+mod algos;
 mod passing_values;
+mod structs;
 mod utils;
 
 /// Multiplies an integer by 10 in Rust
@@ -235,23 +237,23 @@ fn pass_single_character(s: Option<String>) -> Option<String> {
 ///
 /// @export
 #[extendr]
-fn pass_multiple_characters(s: Vec<String>) -> Vec<String> {
+fn pass_multiple_characters(s: CharVec) -> CharVec {
     passing_values::pass_multiple_characters_fn(s)
 }
 
 /// Bubble Sort a vector of doubles
-/// 
+///
 /// Demonstrates using Rust to perform a Bubble Sort on a vector of doubles
-/// 
+///
 /// @param input A double vector to sort
 /// @return a sorted vector of doubles
-/// 
+///
 /// @examples bubble_sort(runif(1000))
-/// 
+///
 /// @export
 #[extendr]
 fn bubble_sort(input: Real) -> Real {
-    bubble_sort::bubble_sort_fn(input)
+    algos::bubble_sort_fn(input)
 }
 
 mod export {

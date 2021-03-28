@@ -1,3 +1,4 @@
+use crate::structs::CharVec;
 use crate::utils::flip;
 use extendr_api::prelude::*;
 
@@ -69,6 +70,11 @@ pub(crate) fn pass_single_character_fn(s: Option<String>) -> Option<String> {
 
 /// Receives a string vector from R, uppoercases it, then returns it
 /// Demonstrates passing a string vector from/to R
-pub(crate) fn pass_multiple_characters_fn(s: Vec<String>) -> Vec<String> {
-    s.iter().map(|x| x.to_uppercase()).collect()
+pub(crate) fn pass_multiple_characters_fn(s: CharVec) -> CharVec {
+    s.into_iter().map(|x| x.map(to_uppercase)).collect()
+}
+
+// Just a helper function
+fn to_uppercase(s: String) -> String {
+    s.to_uppercase()
 }
