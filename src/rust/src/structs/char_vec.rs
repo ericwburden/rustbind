@@ -40,11 +40,7 @@ impl<'a> FromRobj<'a> for CharVec {
 
 // Helper function
 pub(crate) fn parse_rchar(rchar: String) -> Option<String> {
-    if rchar == na_str() {
-        None
-    } else {
-        Some(rchar)
-    }
+    if rchar == na_str() { None } else { Some(rchar) }
 }
 
 /// Allow for iterating over the Vec<Option<String>> wrapped by CharVec
