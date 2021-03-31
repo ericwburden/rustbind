@@ -2,6 +2,7 @@
 
 export(bubble_sort)
 export(bubble_sort_r)
+export(pass_arrow_record_batch)
 export(pass_multiple_characters)
 export(pass_multiple_doubles)
 export(pass_multiple_integers)
