@@ -1,6 +1,6 @@
 if ("rustbind" %in% .packages()) devtools::unload("rustbind")
 system2("R", args = c("CMD", "INSTALL", "--preclean", "--no-multiarch", "--with-keep.source", "--clean", "."))
-devtools::install()
+devtools::install(build_vignettes = TRUE)
 
 library(rustbind)
 target_file <- rprojroot::is_r_package$find_file("R/extendr-wrappers.R")
