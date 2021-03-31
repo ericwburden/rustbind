@@ -61,22 +61,18 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-## This section may be needed for R packages with complex dependencies,
-## but it is not needed for the simple example and it just slows things down,
-## hence it is commented out.
-#      - name: Install system dependencies
-#        if: runner.os == 'Linux'
-#        run: |
-#          while read -r cmd
-#          do
-#            eval sudo $cmd
-#          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
 
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          remotes::install_cran("arrow")
         shell: Rscript {0}
 
       - name: Check
