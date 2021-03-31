@@ -225,3 +225,25 @@ pass_multiple_characters <- function(s) .Call(wrap__pass_multiple_characters, s)
 #' @export
 bubble_sort <- function(input) .Call(wrap__bubble_sort, input)
 
+#' Pass an Arrow RecordBatch back and forth
+#'
+#' Demonstrates a strategy for passing an Arrow RecordBatch from/to R
+#'
+#' The majority of the work here is being done by the
+#' [RecordBatches](crate::structs::RecordBatches) struct and associated
+#' functions that transform a serialized RecordBatch (raw vector) into
+#' RecordBatches and back to a serialized RecordBatch using the IPC
+#' specification.
+#'
+#' @param srb a raw vector representing the contents of an IPC buffer
+#' @return RecordBatches to be serialized back to an IPC buffer
+#'
+#' @examples
+#' mtcars_rb <- arrow::record_batch(mtcars)
+#' mtcars_out <- arrow::write_to_raw(mtcars_rb, "stream")
+#' mtcars_in_buffer <- as.raw(pass_arrow_record_batch(mtcars_out))
+#' mtcars_in <- arrow::read_ipc_stream(mtcars_in_buffer)
+#'
+#' @export
+pass_arrow_record_batch <- function(srb) .Call(wrap__pass_arrow_record_batch, srb)
+
