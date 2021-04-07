@@ -30,10 +30,10 @@ impl RecordBatches {
         self.0.get(0).map(|x| x.schema())
     }
 
-    /// Converts this RecordBatches into an Robj representing a the wrapped 
+    /// Converts this RecordBatches into an Robj representing a the wrapped
     /// Vec<RecordBatch> as a serialized raw vector. The contents of this function,
-    /// as well as most everything under the 'Utility Functions' section, will 
-    /// need to be updated with Arrow 4.0.0 and the addition of the 
+    /// as well as most everything under the 'Utility Functions' section, will
+    /// need to be updated with Arrow 4.0.0 and the addition of the
     /// `StreamWriter.into_inner()` function.
     pub fn into_robj(self) -> Result<Robj> {
         // TODO: Update when Arrow 4.0.0 is released to crates.io
@@ -53,7 +53,9 @@ impl RecordBatches {
 
         // Mark the stream as 'done'
         write_continuation_marker(&mut writer, 0)?;
-        let buffer = writer.into_inner().map_err(|_| "Could not retrieve writer from BufWriter")?;
+        let buffer = writer
+            .into_inner()
+            .map_err(|_| "Could not retrieve writer from BufWriter")?;
         let raw = Raw(&buffer);
         Ok(Robj::from(raw))
     }
@@ -81,7 +83,9 @@ impl<'a> FromRobj<'a> for RecordBatches {
 /// For converting `RecordBatches` to `Robj`
 impl From<RecordBatches> for Robj {
     fn from(batches: RecordBatches) -> Robj {
-        batches.into_robj().expect("Error converting RecordBatches to Raw/Robj")
+        batches
+            .into_robj()
+            .expect("Error converting RecordBatches to Raw/Robj")
     }
 }
 
@@ -102,7 +106,7 @@ impl IntoIterator for RecordBatches {
 // Most of what's in this section comes from inner methods in arrow::ipc::writer::StreamWrtier
 // and arrow::ipc::writer::IpcDataGenerator. ALL of this will be replaced with the
 // release of Arrow 4.0.0 and the `StreamWriter.into_inner()` function. Feel free
-// to peruse these, but 90% of this code is lightly refactored from the 
+// to peruse these, but 90% of this code is lightly refactored from the
 // [arrow::ipc::writer](https://docs.rs/arrow/3.0.0/arrow/ipc/writer/index.html)
 // source.
 

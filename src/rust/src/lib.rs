@@ -281,6 +281,40 @@ fn pass_arrow_record_batch(srb: RecordBatches) -> RecordBatches {
     srb
 }
 
+/// Perform a sample multithreaded operation
+///
+/// Demonstrates the performance of hand-coded multithreaded tasks in Rust
+///
+/// This function uses native multithreading fron the Rust standard library to
+/// calculate the square root of each number in a slice of floats. The algorithm
+/// is the "Babylonian Method" of calculating square roots.
+///
+/// @param f a double vector to calculate the square root of
+/// @return a double vector of square roots
+///
+/// @export
+#[extendr]
+fn multithreaded_naive_sqrt(f: &[f64]) -> Vec<f64> {
+    algos::multithreaded_naive_sqrt(&f)
+}
+
+/// Perform a sample multithreaded operation (rayon)
+///
+/// Demonstrates the performance of multithreaded tasks using rayon in Rust
+///
+/// This function uses the rayon crate to parallelize calculating the square
+/// root of each number in a slice of floats. The algorithm
+/// is the "Babylonian Method" of calculating square roots.
+///
+/// @param f a double vector to calculate the square root of
+/// @return a double vector of square roots
+///
+/// @export
+#[extendr]
+fn rayon_naive_sqrt(f: &[f64]) -> Vec<f64> {
+    algos::rayon_naive_sqrt(&f)
+}
+
 mod export {
     use super::*;
 
@@ -301,5 +335,7 @@ mod export {
         fn pass_multiple_characters;
         fn bubble_sort;
         fn pass_arrow_record_batch;
+        fn multithreaded_naive_sqrt;
+        fn rayon_naive_sqrt;
     }
 }

@@ -39,7 +39,7 @@ impl<'a> FromRobj<'a> for CharVec {
 }
 
 // Helper function
-#[rustfmt::ignore]
+#[rustfmt::skip]
 pub(crate) fn parse_rchar(rchar: String) -> Option<String> {
     if rchar == na_str() { None } else { Some(rchar) }
 }

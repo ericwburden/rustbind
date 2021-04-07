@@ -247,3 +247,31 @@ bubble_sort <- function(input) .Call(wrap__bubble_sort, input)
 #' @export
 pass_arrow_record_batch <- function(srb) .Call(wrap__pass_arrow_record_batch, srb)
 
+#' Perform a sample multithreaded operation
+#'
+#' Demonstrates the performance of hand-coded multithreaded tasks in Rust
+#'
+#' This function uses native multithreading fron the Rust standard library to
+#' calculate the square root of each number in a slice of floats. The algorithm
+#' is the "Babylonian Method" of calculating square roots.
+#'
+#' @param f a double vector to calculate the square root of
+#' @return a double vector of square roots
+#'
+#' @export
+multithreaded_naive_sqrt <- function(f) .Call(wrap__multithreaded_naive_sqrt, f)
+
+#' Perform a sample multithreaded operation (rayon)
+#'
+#' Demonstrates the performance of multithreaded tasks using rayon in Rust
+#'
+#' This function uses the rayon crate to parallelize calculating the square
+#' root of each number in a slice of floats. The algorithm
+#' is the "Babylonian Method" of calculating square roots.
+#'
+#' @param f a double vector to calculate the square root of
+#' @return a double vector of square roots
+#'
+#' @export
+rayon_naive_sqrt <- function(f) .Call(wrap__rayon_naive_sqrt, f)
+
